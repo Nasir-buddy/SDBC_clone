@@ -11,7 +11,6 @@ const Topnav = () => {
         try {
             const { data } = await axios.get(`/search/multi?query=${query}`);
             setSearches(data.results);
-            console.log("searches data is", searches)
 
         } catch (error) {
             console.log(error);
@@ -35,14 +34,14 @@ const Topnav = () => {
             <div className='w-[50%] absolute max-h-[50vh] bg-zinc-400 rounded-lg top-[90%] overflow-auto' >
                 {searches.map((item, index) => (
                     <Link key={index} className='w-full h-[20%] flex justify-start items-center p-10 border-b-2 border-zinc-600 hover:text-zinc-300 hover:bg-zinc-500 duration-300 hover:rounded-lg hover:border-b-black'>
-                        <img src="" alt="" />
+                        <img className='w-[10vh] h-[10vh] object-cover rounded-lg mr-6'
+                         src={`https://image.tmdb.org/t/p/original/${item.backdrop_path || item.profile_path}`} alt="" />
                         <span>{item.name || item.original_name || item.original_title}</span>
                     </Link>
                 ))}
 
             </div>
         </div>
-
     )
 }
 
