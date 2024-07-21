@@ -13,12 +13,15 @@ const HorizontalCards = ({ data }) => {
                     <img
                         className='w-[full] h-[40%] object-cover rounded transition ease-in-out '
                         src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.profile_path}`} alt="" />
-                    <h1 className='text-white text-2xl font-bold mb-6'>
-                        {d.name || d.title || d.original_name || d.original_title}
-                    </h1>
-                    <p className='mt-3 mb-5 text-white'>
-                        {d.overview.slice(0,100)}
-                    </p>
+
+                    <div className='text-white p-2 h-[60%]'>
+                        <h1 className='text-xl font-bold mb-3 mt-3'>
+                            {d.name || d.title || d.original_name || d.original_title}
+                        </h1>
+                        <p className='mt-3 mb-5'>
+                            {d.overview.slice(0, 50)}
+                        </p>
+                    </div>
                 </div>)}
             </div>
         </div>
