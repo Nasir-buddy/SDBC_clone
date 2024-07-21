@@ -8,9 +8,10 @@ const Header = ({ data }) => {
         background: `linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.3), rgba(0,0,0,.6)),
       url(https://image.tmdb.org/t/p/original/${data.backdrop_path || data.profile_path})`,
         backgroundPosition: 'center',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
       }}
-      className='w-full h-[50vh] flex flex-col justify-end items-start p-[10%]'>
+      className='w-full h-[50vh] flex flex-col justify-end items-start p-[5%]'>
       <h1 className='text-white text-3xl font-bold mb-6 w-[70%]'>
         {data.name || data.title || data.original_name || data.original_title}
       </h1>
@@ -18,7 +19,7 @@ const Header = ({ data }) => {
 
       <p className='text-white font-semibold'>
       {data.release_date || data.first_air_date ? <>
-        <i className="ri-megaphone-fill text-yellow-400 mr-2"></i>{data.release_date || data.first_air_date}</>: null}
+        <i className="ri-megaphone-fill text-yellow-400 mr-2"></i>{data.release_date ||  data.first_air_date}</> : null}
       <i className="ri-movie-2-line text-yellow-400 ml-5 mr-2"></i>{data.media_type.toUpperCase()}
       </p>
 
