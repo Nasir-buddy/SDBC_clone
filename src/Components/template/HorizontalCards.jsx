@@ -1,13 +1,9 @@
 import React from 'react'
+import Dropdown from './Dropdown';
 
 const HorizontalCards = ({ data }) => {
-    console.log(data);
     return (
-        <div className='w-full p-5'>
-            <div className='mb-5'>
-                <h1 className='text-3xl font-semibold text-zinc-400'>Trending</h1>
-            </div>
-            <div className='flex w-[100%] overflow-y-hidden  p-4'>
+            <div className='flex w-[100%] overflow-y-hidden p-4'>
                 {data.map((d, i) => <div key={i} className='min-w-[17%] mr-5 rounded p-2 bg-zinc-900 
                 transition ease-in-out delay-100 hover:translate-x-1 hover:scale-110 hover:bg-[#6556CD] duration-300'>
                     <img
@@ -24,7 +20,6 @@ const HorizontalCards = ({ data }) => {
                     </div>
                 </div>)}
             </div>
-        </div>
     )
 }
 
