@@ -13,7 +13,7 @@ const Topnav = () => {
             setSearches(data.results);
 
         } catch (error) {
-            console.log(error);
+            console.log(error );
         }
     }
 
@@ -24,7 +24,7 @@ const Topnav = () => {
 
 
     return (
-        <div className='h-[10vh] w-full flex justify-center items-center relative'>
+        <div className='h-[7vh] w-full flex justify-center items-center relative'>
             <i className="ri-search-eye-line text-3xl text-zinc-300 "></i>
             <input type="text" onChange={(e) => setQuery(e.target.value)} value={query} placeholder='search anything' className='p-5 border-none outline-none bg-transparent w-[50%] text-zinc-300' />
             {(query.length > 0) &&
@@ -37,7 +37,7 @@ const Topnav = () => {
                         <img className='w-[10vh] h-[10vh] object-cover rounded-lg mr-6 shadow-lg'
                             src={item.backdrop_path || item.profile_path ?
                                 `https://image.tmdb.org/t/p/original/${item.backdrop_path || item.profile_path}` : noimage} alt="" />
-                        <span>{item.name || item.original_name || item.original_title}</span>
+                        <span>{item.name || item.title || item.original_name || item.original_title}</span>
                     </Link>
                 ))}
 
