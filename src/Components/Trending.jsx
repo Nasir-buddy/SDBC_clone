@@ -47,7 +47,7 @@ const Trending = () => {
 
     return trending.length > 0 ? (
         <div className='w-screen h-screen'>
-            <div className='w-full flex items-center'>
+            <div className='w-full flex items-center px-10'>
                 <h1 className='text-2xl text-zinc-400 font-semibold'>
                     <i
                         onClick={() => { navigate(-1) }}
