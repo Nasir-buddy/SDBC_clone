@@ -53,7 +53,6 @@ const People = () => {
                         className="hover:text-[#6556CD] ri-arrow-left-line mr-2"></i>
                     Persons</h1>
                 <Topnav />
-                <Dropdown title="category" options={["on_the_air", "popular", "top_rated","airing_today"]} func={(e) => setCategory(e.target.value)} />
             </div>
   
             <InfiniteScroll dataLength={person.length} next={getPerson} hasMore={hasMore} loader={<h1>Loading</h1>}>
