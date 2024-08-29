@@ -27,14 +27,15 @@ const Moviedetails = () => {
       backgroundRepeat: 'no-repeat'
     }}
     className='w-screen h-screen px-[10%]'>
-      <nav className='w-full'>
+      <nav className='h-[8vh] flex gap-10 items-center text-2xl text-white'>
       <Link
-        onClick={() => { navigate(-1) }}
-        className="hover:text-[#6556CD] ri-arrow-left-line mr-2"></Link>
 
-        <a href=""><i className="ri-external-fill"></i></a>
-        <a href=""><i className="ri-earth-fill"></i></a>
-        <a href="">imdb</a>
+        onClick={() => { navigate(-1) }}
+        className="hover:text-[#6556CD] ri-arrow-left-line"></Link>
+
+        <a target='_blank' className='transition ease-in-out hover:scale-125 delay-100' href={info.details.homepage}><i className="ri-external-link-fill"></i></a>
+        <a target='_blank' className='transition ease-in-out hover:scale-125 delay-100' href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}><i className="ri-earth-fill"></i></a>
+        <a target='_blank' className='transition ease-in-out hover:scale-125 delay-100' href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}>imdb</a>
       </nav>
     </div>
   ) : <Loading />
