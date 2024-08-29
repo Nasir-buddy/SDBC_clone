@@ -12,7 +12,7 @@ const Popular = () => {
     const [popular, setpopular] = useState([]);
     const [page, setpage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
-    document.title = "SCSDB | Popular" + category.toUpperCase();
+    document.title = "SCSDB | Popular"
     const getPopular = async () => {
         try {
             const { data } = await axios.get(`${category}/popular?page=${page}`);
