@@ -17,7 +17,6 @@ const Topnav = () => {
         }
     }
 
-
     useEffect(() => {
         GetSearch();
     }, [query]);
@@ -31,9 +30,11 @@ const Topnav = () => {
                 (<i className="ri-close-large-line text-zinc-300 text-3xl" onClick={() => setQuery("")}></i>)
             }
 
-            <div className='w-[50%] absolute max-h-[50vh] bg-zinc-400 rounded-lg top-[90%] overflow-auto' >
+            <div className='w-[50%] z-10 absolute max-h-[50vh] bg-zinc-400 rounded-lg top-[90%] overflow-auto' >
                 {searches.map((item, index) => (
-                    <Link key={index} className='w-full h-[20%] flex justify-start items-center p-10 border-b-2 border-zinc-600 hover:text-zinc-300 hover:bg-zinc-500 duration-300 hover:rounded-lg hover:border-b-black'>
+                    <Link 
+                    to={`/${item.media_type}/details/${item.id}`}
+                     key={index} className='w-full h-[20%] flex justify-start items-center p-10 border-b-2 border-zinc-600 hover:text-zinc-300 hover:bg-zinc-500 duration-300 hover:rounded-lg hover:border-b-black'>
                         <img className='w-[10vh] h-[10vh] object-cover rounded-lg mr-6 shadow-lg'
                             src={item.backdrop_path || item.profile_path ?
                                 `https://image.tmdb.org/t/p/original/${item.backdrop_path || item.profile_path}` : noimage} alt="" />
