@@ -15,7 +15,7 @@ const Trending = () => {
     const [trending, setTrending] = useState([]);
     const [page, setpage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
-    document.title = "SCSDB | Trending " + category.toUpperCase();
+    document.title = "SCSDB | Trending "
     const getTrending = async () => {
         try {
             const { data } = await axios.get(`/trending/${category}/${duration}?page=${page}`);
