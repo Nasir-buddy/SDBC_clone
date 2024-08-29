@@ -52,7 +52,7 @@ const Home = () => {
                 <div className='flex justify-between py-4 mx-5'>
                     <h1 className='text-3xl font-semibold text-zinc-400'>Trending</h1>
                     <Dropdown 
-                    title="Filter" 
+                    // title="Filter" 
                     options={["all", "tv", "movie"]} 
                     func={(e) => setCategory(e.target.value)}/>
                 </div>
