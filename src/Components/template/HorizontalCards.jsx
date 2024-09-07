@@ -7,7 +7,7 @@ const HorizontalCards = ({ data }) => {
     
     return (
             <div className='flex w-[100%] max-h-[38%] overflow-y-hidden p-4'>
-                {data.map((d, i) => (<Link
+                {data.length > 0 ? data.map((d, i) => (<Link
                 to={`/${d.media_type}/details/${d.id}`}
                 key={i} className='min-w-[17%] mr-5 rounded p-2 bg-zinc-900 
                 transition ease-in-out delay-100 hover:translate-x-1 hover:scale-110 hover:bg-[#6556CD] duration-300'> 
@@ -23,7 +23,7 @@ const HorizontalCards = ({ data }) => {
                             {d.overview.slice(0, 100)}
                         </p>
                     </div>
-                </Link>))}
+                </Link>)) : <h1>Nothing to show</h1>}
             </div>
     )
 }
