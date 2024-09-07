@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncloadmovie, removemovie } from './store/actions/movieActions';
 import Loading from './template/Loading';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const Moviedetails = () => {
+  const{ pathname } = useLocation();
   const { id } = useParams();
   const { info } = useSelector((state) => state.movie);
   console.log("info details : ", info);
@@ -47,22 +48,37 @@ const Moviedetails = () => {
 
         {/* heading */}
         <div className='content ml-10'>
+          {/* detail name */}
           <h1 className='text-5xl font-black text-white'>
             {info.details.name || info.details.title || info.details.original_name || info.details.original_title}
             <small className='text-2xl ml-3 font-bold text-zinc-300'>{info.details.release_date.split('-')[0]}</small>
           </h1>
 
-        {/* rating div */}
-        <div className='flex text-white items-center gap-x-5 mt-5 mb-10'>
-          <span className='text-white h-[5vh] w-[5vh] bg-yellow-500 flex items-center justify-center rounded-full bottom-[25%] right-2'>
-            {(info.details.vote_average * 10).toFixed()} <sup>%</sup>
-          </span>
-          <h1 className='font-semibold text-2xl w-[60px] leading-6'>User Score</h1>
-          <h1>{info.details.release_date}</h1>
-          <h1>{info.details.genres.map((item) => item.name).join(',')}</h1>
-          <h1>{info.details.runtime}:min</h1>
-        </div>
+          {/* rating div */}
+          <div className='flex text-white items-center gap-x-5 mt-3 mb-5'>
+            <span className='text-white h-[5vh] w-[5vh] bg-yellow-500 flex items-center justify-center rounded-full bottom-[25%] right-2'>
+              {(info.details.vote_average * 10).toFixed()} <sup>%</sup>
+            </span>
+            <h1 className='font-semibold text-2xl w-[60px] leading-6'>User Score</h1>
+            <h1>{info.details.release_date}</h1>
+            <h1>{info.details.genres.map((item) => item.name).join(',')}</h1>
+            <h1>{info.details.runtime}:min</h1>
+          </div>
 
+          {/* tagline part */}
+          <h1 className='text-xl font-semibold italic text-zinc-200'>{info.details.tagline}</h1>
+
+
+          <h1 className='text-xl mt-5 text-white mb-3'>Overview</h1>
+          <p className='text-white '>{info.details.overview}</p>
+
+
+          <h1 className='text-xl mt-5 text-white mb-3'>Movie Translated</h1>
+          <p className='text-white mb-8'>{info.translations.join(' ')}</p>
+
+          <Link 
+          className='p-4 px-7 bg-white rounded-md hover:bg-blue-500 '
+           to={`${pathname}/trailer`}><i class="ri-play-large-fill"></i>Play Trailer</Link>
         </div>
       </div>
       {/* part 3 platforms */}
