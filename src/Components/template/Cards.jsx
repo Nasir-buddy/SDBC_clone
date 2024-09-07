@@ -10,7 +10,7 @@ const Cards = ({ data, title }) => {
           key={index}
           className='relative w-[17vw] mb-10 mr-[1%] hover:translate-x-1 hover:scale-110 transition ease-in-out delay-100 '
         >
-          <img className='h-[40vh] rounded-md shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] hover:shadow-[8px_17px_38px_2px_rgba(101,86,205,1)]'
+          <img className='h-[40vh] rounded-md shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] hover:shadow-[8px_17px_38px_2px_rgba(101,86,205,1)] object-cover'
             src={`https://image.tmdb.org/t/p/original/${card.poster_path || card.backdrop_path || card.profile_path}`}
             style={{ objectFit: 'cover' }}
             alt="" />
