@@ -125,15 +125,15 @@ const Tvdetails = () => {
       <hr className='mt-5 mb-5 ' />
       <h1 className='text-white text-4xl mb-2'>Seasons</h1>
       <div className='w-[100%] flex overflow-y-hidden p-4 '>
-            {info.details.seasons.map((season, index) => (
+            {info.details.seasons.length > 0 ? info.details.seasons.map((season, index) => (
               <div className='w-[15vh] mr-[9%]'>
                 <img key={index} className='h-[34vh] min-w-[14vw] rounded-md shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] hover:shadow-[8px_17px_38px_2px_rgba(101,86,205,1)] object-cover'
                   src={`https://image.tmdb.org/t/p/original/${season.poster_path}`}
                   // style={{ objectFit: 'cover' }}
                   alt="" />
-                <h5 className='text-white text-2xl mt-2 font-semibold'>{season.name || season.title || season.original_name || season.original_title}</h5>
+                <h5 className='text-white text-2xl mt-2 font-semibold'>{season.name}</h5>
               </div>
-            ))}
+            )) : <h1>Nothing to show.</h1>}
       </div>
       {/* path t recommendation and similar stuff */}
       <hr className='mt-5 mb-5 ' />
