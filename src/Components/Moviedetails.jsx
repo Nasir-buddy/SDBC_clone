@@ -78,7 +78,7 @@ const Moviedetails = () => {
 
           <Link
             className='p-4 px-7 bg-white rounded-md hover:bg-blue-500 '
-            to={`${pathname}/trailer`}><i class="ri-play-large-fill"></i>Play Trailer</Link>
+            to={`${pathname}/trailer`}><i className="ri-play-large-fill"></i>Play Trailer</Link>
         </div>
       </div>
       {/* part 3 platforms */}
@@ -86,8 +86,9 @@ const Moviedetails = () => {
         {info.watchproviders && info.watchproviders.flatrate &&
           <div className='flex gap-10 items-center text-white'>
             <h1>Available on platforms</h1>
-            {info.watchproviders.flatrate.map((item) => (
+            {info.watchproviders.flatrate.map((item, index) => (
               <img
+                key={index}
                 title={item.provider_name}
                 className='w-[5vh] h-[5vh] object-cover rounded-md '
                 src={`https://image.tmdb.org/t/p/original/${item.logo_path}`} alt='' />
@@ -99,7 +100,8 @@ const Moviedetails = () => {
         {info.watchproviders && info.watchproviders.rent &&
           <div className='flex gap-x-10 items-center text-white'>
             <h1>Available on Rent</h1>
-            {info.watchproviders.rent.map((w) => (<img
+            {info.watchproviders.rent.map((w, i) => (<img
+              key={i}
               title={w.provider_name}
               className='w-[5vh] h-[5vh] object-cover rounded-md '
               src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} alt='' />))}
@@ -110,8 +112,9 @@ const Moviedetails = () => {
         {info.watchproviders && info.watchproviders.buy &&
           <div className='flex gap-10 items-center text-white'>
             <h1>Available to buy </h1>
-            {info.watchproviders.buy.map((item) => (
+            {info.watchproviders.buy.map((item, index) => (
               <img
+                key={index}
                 title={item.provider_name}
                 className='w-[5vh] h-[5vh] object-cover rounded-md '
                 src={`https://image.tmdb.org/t/p/original/${item.logo_path}`} alt='' />))}
