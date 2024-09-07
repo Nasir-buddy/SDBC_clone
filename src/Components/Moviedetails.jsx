@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncloadmovie, removemovie } from './store/actions/movieActions';
 import Loading from './template/Loading';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import HorizontalCards from './template/HorizontalCards'
 const Moviedetails = () => {
-  const{ pathname } = useLocation();
+  const { pathname } = useLocation();
   const { id } = useParams();
   const { info } = useSelector((state) => state.movie);
   console.log("info details : ", info);
@@ -27,7 +27,7 @@ const Moviedetails = () => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}
-      className='w-screen h-screen px-[10%] overflow-x-auto'>
+      className='w-screen h-screen px-[10%] overflow-x-auto relative'>
       {/* part 1 navigation */}
       <nav className='h-[8vh] flex gap-10 items-center text-2xl text-white'>
         <Link
@@ -76,9 +76,9 @@ const Moviedetails = () => {
           <h1 className='text-xl mt-5 text-white mb-3'>Movie Translated</h1>
           <p className='text-white mb-8'>{info.translations.join(' ')}</p>
 
-          <Link 
-          className='p-4 px-7 bg-white rounded-md hover:bg-blue-500 '
-           to={`${pathname}/trailer`}><i class="ri-play-large-fill"></i>Play Trailer</Link>
+          <Link
+            className='p-4 px-7 bg-white rounded-md hover:bg-blue-500 '
+            to={`${pathname}/trailer`}><i class="ri-play-large-fill"></i>Play Trailer</Link>
         </div>
       </div>
       {/* part 3 platforms */}
@@ -121,8 +121,8 @@ const Moviedetails = () => {
       {/* recommendation and similar stuff */}
       <hr className='mt-5 mb-5 ' />
       <h1 className='text-white text-4xl mb-2'>Recommendations And Similar</h1>
-      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar}/>
-      
+      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar} />
+      <Outlet />
     </div>
   ) : <Loading />
 }
