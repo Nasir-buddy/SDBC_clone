@@ -119,7 +119,8 @@ const Moviedetails = () => {
       </div>
 
       {/* recommendation and similar stuff */}
-
+      <hr className='mt-5 mb-5 ' />
+      <h1 className='text-white text-4xl mb-2'>Recommendations And Similar</h1>
       <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar}/>
       
     </div>
