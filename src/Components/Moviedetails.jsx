@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { asyncloadmovie, removemovie } from './store/actions/movieActions';
 import Loading from './template/Loading';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-
+import HorizontalCards from './template/HorizontalCards'
 const Moviedetails = () => {
   const{ pathname } = useLocation();
   const { id } = useParams();
@@ -17,7 +17,7 @@ const Moviedetails = () => {
     return () => {
       dispatch(removemovie());
     }
-  }, [])
+  }, [id])
   return info ? (
     <div
       style={{
@@ -27,7 +27,7 @@ const Moviedetails = () => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}
-      className='w-screen h-screen px-[10%]'>
+      className='w-screen h-screen px-[10%] overflow-x-auto'>
       {/* part 1 navigation */}
       <nav className='h-[8vh] flex gap-10 items-center text-2xl text-white'>
         <Link
@@ -118,7 +118,10 @@ const Moviedetails = () => {
           </div>}
       </div>
 
+      {/* recommendation and similar stuff */}
 
+      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar}/>
+      
     </div>
   ) : <Loading />
 }
