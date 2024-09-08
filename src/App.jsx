@@ -6,6 +6,11 @@ import Popular from './Components/Popular'
 import Movies from './Components/Movies'
 import Tvshow from './Components/Tvshow'
 import People from './Components/People'
+import Moviedetails from './Components/Moviedetails'
+import Tvdetails from './Components/Tvdetails'
+import Persondetails from './Components/Persondetails'
+import Trailer from './Components/template/Trailer'
+import Notfound from './Components/template/Notfound'
 
 const App = () => {
   return (
@@ -14,9 +19,18 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/trending' element={<Trending />} />
         <Route path='/popular' element={<Popular />}></Route>
-        <Route path='/movie' element={<Movies />}></Route>
-        <Route path='/tvshow' element={<Tvshow />}></Route>
-        <Route path='/people' element={<People />}></Route>
+        <Route path='/movie' element={<Movies />} />
+        <Route path='/movie/details/:id' element={<Moviedetails />}>
+          <Route path='/movie/details/:id/trailer' element={<Trailer />} />
+        </Route>
+        <Route path='/tv' element={<Tvshow />} />
+        <Route path='/tv/details/:id' element={<Tvdetails />}>
+          <Route path='/tv/details/:id/trailer' element={<Trailer />} />
+        </Route>
+        <Route path='/people' element={<People />} />
+        <Route path='/person/details/:id' element={<Persondetails />} />
+        <Route path='*' element={<Notfound />}></Route>
+
       </Routes>
     </div>
   )

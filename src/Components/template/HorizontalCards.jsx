@@ -1,7 +1,6 @@
 import React from 'react'
-import Dropdown from './Dropdown';
 import { Link } from 'react-router-dom';
-
+import noimage from '/no-image.jpg'
 const HorizontalCards = ({ data }) => {
     console.log(data);
     
@@ -13,7 +12,7 @@ const HorizontalCards = ({ data }) => {
                 transition ease-in-out delay-100 hover:translate-x-1 hover:scale-110 hover:bg-[#6556CD] duration-300'> 
                     <img
                         className='rounded transition ease-in-out '
-                        src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.profile_path}`} alt="" />
+                        src={d.backdrop_path || d.poster_path ? `https://image.tmdb.org/t/p/original/${d.backdrop_path || d.profile_path}` : noimage} alt="" />
 
                     <div className='text-white p-2 h-[55%] overflow-y-auto'>
                         <h1 className='text-xl font-bold mb-3 mt-3'>

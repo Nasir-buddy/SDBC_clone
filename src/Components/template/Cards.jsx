@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import noimage from '/no-image.jpg'
 const Cards = ({ data, title }) => {
     return (
     <div className='flex flex-wrap w-full h-full px-[5%] py-12 bg-[#1F1E24]'>
@@ -11,7 +11,7 @@ const Cards = ({ data, title }) => {
           className='relative w-[17vw] mb-10 mr-[1%] hover:translate-x-1 hover:scale-110 transition ease-in-out delay-100 '
         >
           <img className='h-[40vh] rounded-md shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] hover:shadow-[8px_17px_38px_2px_rgba(101,86,205,1)] object-cover'
-            src={`https://image.tmdb.org/t/p/original/${card.poster_path || card.backdrop_path || card.profile_path}`}
+            src={card.poster_path || card.backdrop_path || card.profile_path ? `https://image.tmdb.org/t/p/original/${card.poster_path || card.backdrop_path || card.profile_path}`: noimage}
             style={{ objectFit: 'cover' }}
             alt="" />
 
