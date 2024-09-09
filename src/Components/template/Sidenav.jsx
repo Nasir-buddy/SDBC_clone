@@ -40,7 +40,7 @@ export default function ResponsiveSideNav() {
 
                 {/* Nav sections */}
                 <nav className="flex flex-col text-zinc-400 text-lg space-y-2">
-                    <h2 className="text-white font-semibold mt-6 mb-3 bg-gradient-to-bl from-slate-200 via-violet-500 to-zinc-400 bg-clip-text text-transparent">New Feeds</h2>
+                    <span className="text-white font-semibold mt-6 mb-3 bg-gradient-to-bl from-slate-200 via-violet-500 to-zinc-400 bg-clip-text text-transparent">New Feeds</span>
                     <NavLink 
                      to="/trending" icon="ri-fire-fill">
                         Trending
@@ -62,7 +62,7 @@ export default function ResponsiveSideNav() {
                 <hr className="border-none h-px bg-zinc-700 my-6" />
 
                 <nav className="flex flex-col text-zinc-400 text-lg space-y-2">
-                    <h2 className="text-white font-semibold mb-3 bg-gradient-to-bl from-slate-200 via-violet-500 to-zinc-400 bg-clip-text text-transparent">Website Information</h2>
+                    <span className="text-white font-semibold mb-3 bg-gradient-to-bl from-slate-200 via-violet-500 to-zinc-400 bg-clip-text text-transparent">Website Information</span>
                     <NavLink to="/about" icon="ri-information-line">
                         About Us
                     </NavLink>
