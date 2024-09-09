@@ -7,7 +7,7 @@ import HorizontalCards from './template/HorizontalCards';
 import Loading from './template/Loading';
 import Dropdown from './template/Dropdown';
 const Home = () => {
-    document.title = "SCSDB | Movie App";
+    document.title = "Nasir Ali OTT App";
     const [wallpaper, setWallpaper] = useState(null);
     const [trending, setTrending] = useState(null);
     const [category, setCategory] = useState("all");
