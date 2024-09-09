@@ -65,6 +65,7 @@ export default function Component() {
               {(info.details.vote_average * 10).toFixed()}<sup>%</sup>
             </span>
             <h2 className="text-lg font-semibold sm:text-xl">User Score</h2>
+
             <h2>{info.details.release_date}</h2>
             <h2>{info.details.genres.map((item) => item.name).join(', ')}</h2>
             <h2>{info.details.runtime} min</h2>
