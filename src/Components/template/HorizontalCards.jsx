@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import noimage from '/no-image.jpg'
 const HorizontalCards = ({ data }) => {
-  console.log(data);
 
   return (
     <div className="w-full overflow-hidden p-4">
@@ -13,7 +12,7 @@ const HorizontalCards = ({ data }) => {
               to={`/${d.media_type}/details/${d.id}`}
               key={i}
               className="flex-shrink-0 w-72 sm:w-72  bg-zinc-900 rounded-lg overflow-hidden shadow-lg 
-                         transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#6556CD]"
+                         transition duration-300 ease-in-out transform hover:bg-[#6556CD]"
             >
               <img
                 className="w-full h-40 object-cover transition-opacity duration-300 ease-in-out"
