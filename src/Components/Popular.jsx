@@ -41,7 +41,7 @@ const Popular = () => {
         refreshHandler();
     }, [category]);
     return popular.length > 0 ? (
-        <div className='w-screen h-screen'>
+        <div className='w-screen h-screen mt-3'>
         {/* Header Section */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4 items-center px-5 py-5 sm:py-1'>
             <h1 className='text-2xl text-zinc-400 font-semibold flex items-center'>
