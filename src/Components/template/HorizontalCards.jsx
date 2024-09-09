@@ -2,29 +2,43 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import noimage from '/no-image.jpg'
 const HorizontalCards = ({ data }) => {
-    console.log(data);
-    
-    return (
-            <div className='flex w-[100%] max-h-[38%] overflow-y-hidden p-4'>
-                {data.length > 0 ? data.map((d, i) => (<Link
-                to={`/${d.media_type}/details/${d.id}`}
-                key={i} className='min-w-[17%] mr-5 rounded p-2 bg-zinc-900 
-                transition ease-in-out delay-100 hover:translate-x-1 hover:scale-110 hover:bg-[#6556CD] duration-300'> 
-                    <img
-                        className='rounded transition ease-in-out '
-                        src={d.backdrop_path || d.poster_path ? `https://image.tmdb.org/t/p/original/${d.backdrop_path || d.profile_path}` : noimage} alt="" />
+  console.log(data);
 
-                    <div className='text-white p-2 h-[55%] overflow-y-auto'>
-                        <h1 className='text-xl font-bold mb-3 mt-3'>
-                            {d.name || d.title || d.original_name || d.original_title}
-                        </h1>
-                        <p className='mt-3 mb-5'>
-                            {d.overview.slice(0, 100)}
-                        </p>
-                    </div>
-                </Link>)) : <h1>Nothing to show</h1>}
-            </div>
-    )
+  return (
+    <div className="w-full overflow-hidden p-4">
+      <div className="flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
+        {data.length > 0 ? (
+          data.map((d, i) => (
+            <Link
+              to={`/${d.media_type}/details/${d.id}`}
+              key={i}
+              className="flex-shrink-0 w-72 sm:w-72  bg-zinc-900 rounded-lg overflow-hidden shadow-lg 
+                         transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#6556CD]"
+            >
+              <img
+                className="w-full h-40 object-cover transition-opacity duration-300 ease-in-out"
+                src={d.backdrop_path || d.poster_path ? `https://image.tmdb.org/t/p/w500/${d.backdrop_path || d.poster_path}` : noimage}
+                alt={d.name || d.title || d.original_name || d.original_title || "Media image"}
+                loading="lazy"
+              />
+              <div className="p-4">
+                <h2 className="text-white text-lg font-bold mb-2 line-clamp-2">
+                  {d.name || d.title || d.original_name || d.original_title}
+                </h2>
+                <p className="text-gray-300 text-sm line-clamp-3">
+                  {d.overview}
+                </p>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <p className="text-white text-lg">Nothing to show</p>
+        )}
+      </div>
+    </div>
+
+
+  )
 }
 
 export default HorizontalCards

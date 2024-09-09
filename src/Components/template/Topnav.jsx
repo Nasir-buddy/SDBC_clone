@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
-import noimage from '/no-image.jpg'
-const Topnav = () => {
+import noimage from '/no-image.jpg';
 
+const Topnav = () => {
     const [query, setQuery] = useState("");
     const [searches, setSearches] = useState([]);
 
@@ -11,40 +11,63 @@ const Topnav = () => {
         try {
             const { data } = await axios.get(`/search/multi?query=${query}`);
             setSearches(data.results);
-
         } catch (error) {
-            console.log(error );
+            console.log(error);
         }
-    }
+    };
 
     useEffect(() => {
-        GetSearch();
+        if (query.length > 0) {
+            GetSearch();
+        } else {
+            setSearches([]);
+        }
     }, [query]);
 
-
     return (
-        <div className='h-[7vh] w-full flex justify-center items-center relative'>
-            <i className="ri-search-eye-line text-3xl text-zinc-300 "></i>
-            <input type="text" onChange={(e) => setQuery(e.target.value)} value={query} placeholder='search anything' className='p-5 border-none outline-none bg-transparent w-[50%] text-zinc-300' />
-            {(query.length > 0) &&
-                (<i className="ri-close-large-line text-zinc-300 text-3xl" onClick={() => setQuery("")}></i>)
-            }
+        <div className="relative w-full max-w-2xl mx-auto">
+      <div className="flex items-center bg-zinc-800 rounded-full overflow-hidden shadow-lg">
+        <i className="ri-search-eye-line text-xl sm:text-2xl text-zinc-300 ml-4"></i>
+        <input
+          type="text"
+          onChange={(e) => setQuery(e.target.value)}
+          value={query}
+          placeholder="Search anything"
+          className="flex-1 px-4 py-2 sm:py-3 bg-transparent text-zinc-300 placeholder-zinc-500 border-none outline-none"
+        />
+        {query.length > 0 && (
+          <button
+            onClick={() => setQuery("")}
+            className="p-2 text-zinc-300 hover:text-white transition-colors duration-300"
+            aria-label="Clear search"
+          >
+            <i className="ri-close-line text-xl sm:text-2xl"></i>
+          </button>
+        )}
+      </div>
 
-            <div className='w-[50%] z-10 absolute max-h-[50vh] bg-zinc-400 rounded-lg top-[90%] overflow-auto' >
-                {searches.map((item, index) => (
-                    <Link 
-                    to={`/${item.media_type}/details/${item.id}`}
-                     key={index} className='w-full h-[20%] flex justify-start items-center p-10 border-b-2 border-zinc-600 hover:text-zinc-300 hover:bg-zinc-500 duration-300 hover:rounded-lg hover:border-b-black'>
-                        <img className='w-[10vh] h-[10vh] object-cover rounded-lg mr-6 shadow-lg'
-                            src={item.backdrop_path || item.profile_path ?
-                                `https://image.tmdb.org/t/p/original/${item.backdrop_path || item.profile_path}` : noimage} alt="" />
-                        <span>{item.name || item.title || item.original_name || item.original_title}</span>
-                    </Link>
-                ))}
-
-            </div>
+      {query.length > 0 && searches.length > 0 && (
+        <div className="absolute top-full left-0 right-0 mt-2 max-h-[60vh] bg-zinc-800 rounded-lg overflow-auto shadow-lg z-10">
+          {searches.map((item, index) => (
+            <Link
+              to={`/${item.media_type}/details/${item.id}`}
+              key={index}
+              className="flex items-center p-3 hover:bg-zinc-700 transition duration-300"
+            >
+              <img
+                className="w-16 h-16 object-cover rounded-md mr-4"
+                src={item.backdrop_path || item.profile_path ? `https://image.tmdb.org/t/p/w200/${item.backdrop_path || item.profile_path}` : noimage}
+                alt={item.name || item.title || "Search result"}
+              />
+              <span className="text-sm sm:text-base text-zinc-300">
+                {item.name || item.title || item.original_name || item.original_title}
+              </span>
+            </Link>
+          ))}
         </div>
-    )
-}
+      )}
+    </div>
+    );
+};
 
-export default Topnav
+export default Topnav;
