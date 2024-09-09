@@ -12,7 +12,6 @@ const Persondetails = () => {
   const { pathname } = useLocation();
   const { id } = useParams();
   const { info } = useSelector((state) => state.person);
-  console.log("info details : ", info);
   const [category, setCategory] = useState("movie")
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -118,7 +117,7 @@ const Persondetails = () => {
       <p className='text-zinc-400 mt-5'>{info.details.biography}</p>
 
       {/* Summary */}
-      <h1 className='text-lg text-zinc-400 font-semibold'>
+      <h1 className='text-lg text-zinc-400 font-semibold mt-3'>
         Summary
       </h1>
       <HorizontalCards data={info.combinedCredits.cast} />
@@ -132,7 +131,7 @@ const Persondetails = () => {
       </div>
 
       {/* Acting List */}
-      <div className='list-disc text-zinc-400 w-full h-[50vh] overflow-y-auto shadow-2xl shadow-white mb-10 mt-5'>
+      <div className='list-disc text-zinc-400 w-full h-[50vh] rounded-lg overflow-y-auto shadow-[0px_39px_48px_15px_rgba(170,_144,_170,_0.3)] mb-10 mt-5'>
         {info[category + "Credits"]?.data.cast.map((c, i) => (
           <li key={i} className='hover:text-white duration-300 cursor-pointer p-5 rounded'>
             <Link to={`/${category}/details/${c.id}`}>
