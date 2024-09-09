@@ -18,8 +18,6 @@ const People = () => {
     const getPerson = async () => {
         try {
             const { data } = await axios.get(`/person/${category}?page=${page}`);
-            console.log(data);
-
             if (data.results.length > 0) {
                 setPerson((prev) => [...prev, ...data.results]);
                 setpage(page + 1);
@@ -48,7 +46,7 @@ const People = () => {
         <div className='w-screen h-screen'>
         {/* Header Section */}
         <div className='grid grid-cols-1 md:grid-cols-2 items-center justify-center px-5 max-[640px]:py-5 sm:py-5'>
-            <h1 className='text-xl md:text-2xl text-zinc-400 font-semibold '>
+            <h1 className='text-xl md:text-2xl text-zinc-400 font-semibold max-md:mb-5'>
                 <i
                     onClick={() => { navigate(-1) }}
                     className="hover:text-[#6556CD] ri-arrow-left-line mr-2"
