@@ -42,21 +42,32 @@ const Popular = () => {
     }, [category]);
     return popular.length > 0 ? (
         <div className='w-screen h-screen'>
-            <div className='w-full flex items-center px-10'>
-                <h1 className='text-2xl text-zinc-400 font-semibold'>
-                    <i
-                        onClick={() => { navigate(-1) }}
-                        className="hover:text-[#6556CD] ri-arrow-left-line mr-2"></i>
-                    Popular</h1>
+        {/* Header Section */}
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 items-center px-5 py-5 sm:py-1'>
+            <h1 className='text-2xl text-zinc-400 font-semibold flex items-center'>
+                <i
+                    onClick={() => { navigate(-1) }}
+                    className="hover:text-[#6556CD] ri-arrow-left-line mr-2"
+                ></i>
+                Popular
+            </h1>
+
+            {/* Ensure Topnav spans full width on its column */}
+            <div className='col-span-1md:col-span-2'>
                 <Topnav />
-                <Dropdown title='category' options={["movie", "tv"]} func={(event) => setCategory(event.target.value)} />
             </div>
 
-            <InfiniteScroll dataLength={popular.length} next={getPopular} hasMore={hasMore} loader={<h1>Loading</h1>}>
-                <Cards data={popular} title={category} />
-            </InfiniteScroll>
-
+            {/* Align Dropdown to the right */}
+            <div className='flex justify-center md:justify-end'>
+                <Dropdown title='category' options={["movie", "tv"]} func={(event) => setCategory(event.target.value)} />
+            </div>
         </div>
+
+        {/* Infinite Scroll Section */}
+        <InfiniteScroll dataLength={popular.length} next={getPopular} hasMore={hasMore} loader={<h1>Loading...</h1>}>
+            <Cards data={popular} title={category} />
+        </InfiniteScroll>
+    </div>
     ) : <Loading />
 }
 

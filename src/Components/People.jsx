@@ -19,7 +19,7 @@ const People = () => {
         try {
             const { data } = await axios.get(`/person/${category}?page=${page}`);
             console.log(data);
-            
+
             if (data.results.length > 0) {
                 setPerson((prev) => [...prev, ...data.results]);
                 setpage(page + 1);
@@ -31,7 +31,7 @@ const People = () => {
         }
     }
 
-    const refreshHandler = () => { 
+    const refreshHandler = () => {
         if (person.length === 0) {
             getPerson();
         } else {
@@ -46,20 +46,30 @@ const People = () => {
     }, [category]);
     return person.length > 0 ? (
         <div className='w-screen h-screen'>
-            <div className='w-full flex items-center px-10'>
-                <h1 className='text-2xl text-zinc-400 font-semibold'>
-                    <i
-                        onClick={() => { navigate(-1) }}
-                        className="hover:text-[#6556CD] ri-arrow-left-line mr-2"></i>
-                    Persons</h1>
+        {/* Header Section */}
+        <div className='grid grid-cols-1 md:grid-cols-2 items-center justify-center px-5 max-[640px]:py-5 sm:py-5'>
+            <h1 className='text-xl md:text-2xl text-zinc-400 font-semibold '>
+                <i
+                    onClick={() => { navigate(-1) }}
+                    className="hover:text-[#6556CD] ri-arrow-left-line mr-2"
+                ></i>
+                Persons
+            </h1>
+    
+            {/* Center Topnav in the second column */}
+            <div className='flex justify-center md:justify-end'>
                 <Topnav />
             </div>
-  
-            <InfiniteScroll dataLength={person.length} next={getPerson} hasMore={hasMore} loader={<h1>Loading</h1>}>
-                <Cards data={person} title='person' />
-            </InfiniteScroll>
-  
         </div>
+    
+        {/* Infinite Scroll Section */}
+        <InfiniteScroll dataLength={person.length} next={getPerson} hasMore={hasMore} loader={<h1>Loading...</h1>}>
+            {/* Card Section */}
+            <Cards data={person} title='person' />
+        </InfiniteScroll>
+    </div>
+    
+
     ) : <Loading />
 }
 

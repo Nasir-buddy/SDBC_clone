@@ -43,27 +43,28 @@ const Home = () => {
 
     return wallpaper && trending ? (
         <>
-            <Sidenav />
-            <div className='w-[80%] h-full overflow-auto overflow-x-hidden'>
+ 
+          <div className='relative'>
+          <Sidenav />
+          </div>
+
+            <div className='w-full h-full overflow-auto overflow-x-hidden'>
                 <Topnav />
                 <Header data={wallpaper} />
 
 
                 <div className='flex justify-between py-4 mx-5'>
-                    <h1 className='text-3xl font-semibold text-zinc-400'>Trending</h1>
-                    <Dropdown 
-                    // title="Filter" 
-                    options={["all", "tv", "movie"]} 
-                    func={(e) => setCategory(e.target.value)}/>
+                    <h1 className='text-3xl font-semibold text-zinc-400 mr-10'>Trending</h1>
+                    <Dropdown
+                        title="Filter" 
+                        options={["all", "tv", "movie"]}
+                        func={(e) => setCategory(e.target.value)} />
                 </div>
 
                 <HorizontalCards data={trending} />
             </div>
         </>
     ) : <Loading />
-    // <div className='h-full w-full flex justify-center items-center text-yellow-300 text-[6rem]'>
-    {/* <h1>Loading......</h1> */ }
-    {/* </div> */ }
 }
 
 export default Home
