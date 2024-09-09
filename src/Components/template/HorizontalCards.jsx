@@ -11,8 +11,9 @@ const HorizontalCards = ({ data }) => {
             <Link
               to={`/${d.media_type}/details/${d.id}`}
               key={i}
-              className="flex-shrink-0 w-72 sm:w-72  bg-zinc-900 rounded-lg overflow-hidden shadow-lg 
-                         transition duration-300 ease-in-out transform hover:bg-[#6556CD]"
+              className="flex-shrink-0 w-72 sm:w-72 bg-zinc-900 rounded-lg overflow-hidden shadow-lg 
+                     transition-transform duration-300 ease-in-out transform  
+                     relative group"
             >
               <img
                 className="w-full h-40 object-cover transition-opacity duration-300 ease-in-out"
@@ -28,6 +29,9 @@ const HorizontalCards = ({ data }) => {
                   {d.overview}
                 </p>
               </div>
+              {/* Shining Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#957AD6] to-transparent opacity-10 
+                         group-hover:opacity-40 bg-[length:200%_100%] animate-shine pointer-events-none"></div>
             </Link>
           ))
         ) : (
@@ -35,6 +39,7 @@ const HorizontalCards = ({ data }) => {
         )}
       </div>
     </div>
+
 
 
   )
