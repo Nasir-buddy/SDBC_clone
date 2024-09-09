@@ -11,8 +11,10 @@ import Tvdetails from './Components/Tvdetails'
 import Persondetails from './Components/Persondetails'
 import Trailer from './Components/template/Trailer'
 import Notfound from './Components/template/Notfound'
+import LocomotiveScroll from 'locomotive-scroll';
 
 const App = () => {
+  const locomotiveScroll = new LocomotiveScroll();
   return (
     <div className='bg-[#1F1E24] w-screen h-screen flex'>
       <Routes>
