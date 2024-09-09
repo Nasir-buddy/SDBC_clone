@@ -67,7 +67,7 @@ export default function ResponsiveSideNav() {
                         About Us
                     </NavLink>
                     <NavLink to="/contact" icon="ri-contacts-line">
-                        Contact
+                        Contact Us
                     </NavLink>
                 </nav>
             </div>
